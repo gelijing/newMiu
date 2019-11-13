@@ -1,10 +1,11 @@
-package com.project.miu.bean.myEnum;
+package com.project.miu.commons.myEnum;
 
 public enum ResultEnum {
     UNKNOWN_ERROR(-1,"未知错误"),
     SUCCESS(10000,"成功"),
     USER_NOT_EXIST(1,"用户名或密码错误"),
     USER_IS_EXIST(2,"用户已存在"),
+    ERROR(3,"用户未登录，请先登录"),
     ;
     private Integer code;
     private String msg;

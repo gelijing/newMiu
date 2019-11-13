@@ -1,16 +1,9 @@
 package com.project.miu.service;
 
-import com.project.miu.bean.UserInfo;
+import com.project.miu.bean.model.UserInfo;
 import com.project.miu.dao.LoginDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class LoginService {

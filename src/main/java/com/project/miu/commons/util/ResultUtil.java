@@ -1,6 +1,6 @@
-package com.project.miu.bean.util;
+package com.project.miu.commons.util;
 
-import com.project.miu.bean.myEnum.ResultEnum;
+import com.project.miu.commons.myEnum.ResultEnum;
 import com.project.miu.bean.vo.Result;
 
 public class ResultUtil {

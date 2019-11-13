@@ -1,14 +1,8 @@
 package com.project.miu.dao;
 
-import com.project.miu.bean.UserInfo;
-import org.apache.ibatis.annotations.Select;
+import com.project.miu.bean.model.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Repository
 public interface LoginDao extends JpaRepository<UserInfo,Integer> {

@@ -1,4 +1,4 @@
-package com.project.miu.bean;
+package com.project.miu.bean.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
