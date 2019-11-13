@@ -1,26 +1,31 @@
 package com.project.miu.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
 @DynamicUpdate
+@EntityListeners(AuditingEntityListener.class)
 public class UserInfo {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String userName;
   private String password;
   private long status;
-  private java.sql.Timestamp createTime;
-  private java.sql.Timestamp updateTime;
-
+  @CreatedDate
+  private Date createTime;
+  @LastModifiedDate
+  private Date updateTime;
 
   public long getId() {
     return id;
@@ -58,20 +63,20 @@ public class UserInfo {
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(Date createTime) {
     this.createTime = createTime;
   }
 
 
-  public java.sql.Timestamp getUpdateTime() {
+  public Date getUpdateTime() {
     return updateTime;
   }
 
-  public void setUpdateTime(java.sql.Timestamp updateTime) {
+  public void setUpdateTime(Date updateTime) {
     this.updateTime = updateTime;
   }
 

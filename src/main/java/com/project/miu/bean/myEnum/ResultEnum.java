@@ -3,7 +3,7 @@ package com.project.miu.bean.myEnum;
 public enum ResultEnum {
     UNKNOWN_ERROR(-1,"未知错误"),
     SUCCESS(10000,"成功"),
-    USER_NOT_EXIST(1,"用户不存在"),
+    USER_NOT_EXIST(1,"用户名或密码错误"),
     USER_IS_EXIST(2,"用户已存在"),
     ;
     private Integer code;
