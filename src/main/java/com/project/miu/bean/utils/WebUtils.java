@@ -1,4 +1,4 @@
-package com.project.miu.commons.util;
+package com.project.miu.bean.utils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

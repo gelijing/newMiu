@@ -1,4 +1,4 @@
-package com.project.miu.commons.util;
+package com.project.miu.bean.utils;
 
 import sun.misc.BASE64Encoder;
 
@@ -7,8 +7,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class TokenUtil {
     //随机数发生器
-    public static String genetateToken(){
-        String token = System.currentTimeMillis()+"";//获得毫秒数加随机数
+    public static String genetateToken(String userName){
+        String token = System.currentTimeMillis()+userName;//获得毫秒数加随机数
         String tokenMd5="";
         try{
             MessageDigest md = MessageDigest.getInstance("md5");
