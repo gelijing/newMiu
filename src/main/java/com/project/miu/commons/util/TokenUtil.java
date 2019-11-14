@@ -1,4 +1,4 @@
-package com.project.miu.bean.utils;
+package com.project.miu.commons.util;
 
 import sun.misc.BASE64Encoder;
 

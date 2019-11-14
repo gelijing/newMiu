@@ -2,8 +2,8 @@ package com.project.miu.controller;
 
 import com.project.miu.bean.bo.CouponsBO;
 import com.project.miu.bean.model.Coupons;
-import com.project.miu.bean.utils.Result;
-import com.project.miu.bean.utils.ResultUtil;
+import com.project.miu.commons.util.Result;
+import com.project.miu.commons.util.ResultUtil;
 import com.project.miu.commons.myEnum.ResultEnum;
 import com.project.miu.service.CouponsListService;
 import org.springframework.beans.factory.annotation.Autowired;

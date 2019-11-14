@@ -1,6 +1,7 @@
-package com.project.miu.bean.utils;
+package com.project.miu.commons.util;
 
 import com.project.miu.commons.myEnum.ResultEnum;
+import com.project.miu.commons.util.Result;
 
 public class ResultUtil {
     public static Result success(Object object){

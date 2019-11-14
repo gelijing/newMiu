@@ -3,8 +3,8 @@ package com.project.miu.config.intercepors;
 
 import com.alibaba.fastjson.JSON;
 import com.project.miu.commons.myEnum.ResultEnum;
-import com.project.miu.bean.utils.WebUtils;
-import com.project.miu.bean.utils.Result;
+import com.project.miu.commons.util.WebUtils;
+import com.project.miu.commons.util.Result;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;

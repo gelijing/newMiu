@@ -1,4 +1,4 @@
-package com.project.miu.bean.utils;
+package com.project.miu.commons.util;
 
 public class Result<T> {
     private Integer code;
