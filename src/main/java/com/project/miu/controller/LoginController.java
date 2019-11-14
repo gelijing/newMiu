@@ -61,6 +61,9 @@ public class LoginController {
     @RequestMapping(value = "/exit",method = {RequestMethod.POST})
     //todo token中应该包含userName
     public Result exit(String userName, HttpServletRequest request){
+        if(StringUtils.isEmpty(userName)){
+            return ResultUtil.error(ResultEnum.ERROR.getCode(),ResultEnum.ERROR.getMsg());
+        }
         HttpSession session = request.getSession();
         String sessionToken = (String) session.getAttribute(SESSION_TOKEN_KEY);
         String name = (String) session.getAttribute(SESSION_USERNAME_KEY);
