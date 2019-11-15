@@ -7,6 +7,7 @@ public enum ResultEnum {
     USER_IS_EXIST(2,"用户已存在"),
     ERROR(3,"用户未登录，请先登录"),
     CATEGORY_UUID_NOT_EXIST(4,"类目ID不存在"),
+    PARAM_ERROR(5,"参数错误！"),
     ;
     private Integer code;
     private String msg;

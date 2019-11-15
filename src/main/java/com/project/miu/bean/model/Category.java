@@ -21,5 +21,5 @@ public class Category {
     private String categoryName;
     private Date createTime;
     private Date updateTime;
-    private long delete;
+    private long deleteData;
 }

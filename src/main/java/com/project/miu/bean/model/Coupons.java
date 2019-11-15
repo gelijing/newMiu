@@ -21,7 +21,7 @@ public class Coupons {
     private long money;
     private String address;
     private String description;
-    private String categoryUuid;
+    private long categoryUuid;
     private Timestamp startTime;
     private Timestamp endTime;
     private Timestamp createTime;

@@ -2,6 +2,7 @@ package com.project.miu.controller;
 
 import com.project.miu.bean.bo.CouponsBO;
 import com.project.miu.bean.model.Coupons;
+import com.project.miu.bean.vo.CouponsListVO;
 import com.project.miu.commons.util.Result;
 import com.project.miu.commons.util.ResultUtil;
 import com.project.miu.commons.myEnum.ResultEnum;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 优惠信息列表展示
+ * 优惠券列表展示
  */
 @RestController
 @RequestMapping(value = "/coupons",method = {RequestMethod.POST})
@@ -26,15 +27,18 @@ public class CouponsListController {
 
     /**
      * 优惠券列表
-     * @param categoryUuid
+     * @param categoryUuid 类目
      * @return
      */
     @RequestMapping(value = "/getCouponsList",method = {RequestMethod.POST})
-    public Result getCouponsList(Integer categoryUuid){
-        if(categoryUuid == null || categoryUuid == 0){
+    public Result getCouponsList(Long categoryUuid,Integer pageNum,Integer pageSize){
+        if(categoryUuid == null || categoryUuid == 0 ){
             return ResultUtil.error(ResultEnum.CATEGORY_UUID_NOT_EXIST.getCode(),ResultEnum.CATEGORY_UUID_NOT_EXIST.getMsg());
         }
-        List<Coupons> couponsList = couponsListService.getCouponsList(categoryUuid);
+        if (pageNum < 0 || pageSize <=0){
+            return ResultUtil.error(ResultEnum.PARAM_ERROR.getCode(),ResultEnum.PARAM_ERROR.getMsg());
+        }
+        CouponsListVO couponsList = couponsListService.getCouponsList(categoryUuid,pageNum,pageSize);
         return ResultUtil.success(couponsList);
     }
 
@@ -49,8 +53,7 @@ public class CouponsListController {
             StringUtils.isEmpty(couponsBo.getTitle()) ||
             StringUtils.isEmpty(couponsBo.getAddress())||
                 couponsBo.getMoney()== 0L ||
-                StringUtils.isEmpty(couponsBo.getCategoryUuid())
-            ){
+                couponsBo.getCategoryUuid()==0L){
             throw new Exception("参数错误！");
         }
         int res = couponsListService.putCouponsList(couponsBo);
