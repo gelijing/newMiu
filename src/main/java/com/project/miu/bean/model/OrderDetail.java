@@ -19,6 +19,6 @@ public class OrderDetail {
     private long uuid;
     private Timestamp createTime;
     private Timestamp updateTime;
-    private Byte delete;
+    private Integer delete;
 
 }

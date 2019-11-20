@@ -26,4 +26,10 @@ public class ResultUtil {
         result.setMsg(ResultEnum.PARAM_ERROR.getMsg());
         return result;
     }
+    public static Result error(String msg){
+        Result result = new Result();
+        result.setCode(ResultEnum.PARAM_ERROR.getCode());
+        result.setMsg(msg);
+        return result;
+    }
 }
