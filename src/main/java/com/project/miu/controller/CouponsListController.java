@@ -62,4 +62,20 @@ public class CouponsListController {
         }
         return ResultUtil.success();
     }
+
+    /**
+     * 筛选某一银行的优惠信息
+     * @param bankId 银行id
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/getCouponsListByBankId",method = {RequestMethod.POST})
+    public Result getCouponsListByBankId(Long bankId,Integer pageNum,Integer pageSize){
+        if(bankId == null){
+            return ResultUtil.error("参数错误！");
+        }
+        CouponsListVO couponsList = couponsListService.getCouponsListByBankId(bankId,pageNum,pageSize);
+        return ResultUtil.success(couponsList);
+    }
 }

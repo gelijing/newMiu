@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +23,13 @@ public class CouponsListService {
     @Autowired
     private CouponsDao couponsDao;
 
+    /**
+     * 获取优惠券详情信息
+     * @param categoryUuid
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     public CouponsListVO getCouponsList(Long categoryUuid, Integer pageNum, Integer pageSize) {
         /*ArrayList<String> list = new ArrayList<>();
         Sort sort = new Sort(Sort.Direction.DESC,list);*/
@@ -38,6 +44,22 @@ public class CouponsListService {
         return couponsListVO;
     }
 
+    public CouponsListVO getCouponsListByBankId(Long bankId, Integer pageNum, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNum,pageSize);
+        Page<Coupons> couponsPage = couponsDao.findByBankUuid(bankId,pageable);
+        int total = (int) couponsPage.getTotalElements();
+        List<Coupons> couponsList = couponsPage.getContent();
+        CouponsListVO couponsListVO = new CouponsListVO();
+        couponsListVO.setTotalNum(total);
+        couponsListVO.setCouponsList(couponsList);
+        return couponsListVO;
+    }
+
+    /**
+     * 存优惠券信息
+     * @param couponsBO
+     * @return
+     */
     public int putCouponsList(CouponsBO couponsBO) {
         Coupons coup = couponsDao.findByUuid(couponsBO.getUuid());
         if(coup == null){
@@ -64,4 +86,16 @@ public class CouponsListService {
         }
         return 0;
     }
+
+    /**
+     * 获取过期优惠券信息
+     * @param nowTime
+     * @return
+     */
+    public List<Coupons> getCouponsList(String nowTime){
+        Date now = DateUtils.string2Date(nowTime);
+        List<Coupons> couponsList = couponsDao.findByEndTimeLessThan(now);
+        return couponsList;
+    }
+
 }

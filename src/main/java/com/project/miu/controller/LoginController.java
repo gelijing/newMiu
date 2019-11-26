@@ -26,6 +26,13 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     * 登录帐号
+     * @param userName 用户名
+     * @param password 密码 //todo 增加用户id
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/login",method = {RequestMethod.POST})
     public Result login(String userName, String password, HttpServletRequest request){
         if(StringUtils.isEmpty(userName)|| StringUtils.isEmpty(password)){
@@ -45,6 +52,12 @@ public class LoginController {
         return ResultUtil.success(map);
     }
 
+    /**
+     * 注册 //todo 将密码加密
+     * @param userName 用户名
+     * @param password 密码
+     * @return
+     */
     @RequestMapping(value = "/register",method = {RequestMethod.POST})
     public Result register(String userName,String password){
         if(StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)){

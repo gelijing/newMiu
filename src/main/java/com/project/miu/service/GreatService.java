@@ -5,13 +5,10 @@ import com.project.miu.bean.model.Great;
 import com.project.miu.dao.CouponsDao;
 import com.project.miu.dao.GreatDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GreatService {
@@ -22,7 +19,7 @@ public class GreatService {
     private CouponsDao couponsDao;
 
     /**
-     * 收藏
+     * 收藏 //todo 收藏之后是否显示商家是否显示谁谁收藏了
      * @param user_uuid
      * @param coupons_uuid
      * @return
