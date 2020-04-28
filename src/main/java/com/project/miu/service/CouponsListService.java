@@ -44,7 +44,8 @@ public class CouponsListService {
         return couponsListVO;
     }
 
-    public CouponsListVO getCouponsListByBankId(Long bankId, Integer pageNum, Integer pageSize) {
+    //todo 有问题
+    /*public CouponsListVO getCouponsListByBankId(Long bankId, Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNum,pageSize);
         Page<Coupons> couponsPage = couponsDao.findByBankUuid(bankId,pageable);
         int total = (int) couponsPage.getTotalElements();
@@ -53,7 +54,7 @@ public class CouponsListService {
         couponsListVO.setTotalNum(total);
         couponsListVO.setCouponsList(couponsList);
         return couponsListVO;
-    }
+    }*/
 
     /**
      * 存优惠券信息

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CommentsDao extends JpaRepository<Comments,Long> {
 
-    Comments findByCommentsUuidAndDeleteData(String commentsUuid, Integer deleteData);
+    Comments findByUserUuidAndCommentsUuidAndDeleteData(String userUuid, String commentsUuid, Integer deleteData);
 }

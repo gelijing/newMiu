@@ -1,6 +1,8 @@
 package com.project.miu.controller;
 
+import com.project.miu.bean.dto.SessionUserDTO;
 import com.project.miu.commons.util.ResultUtil;
+import com.project.miu.commons.util.SecurityUtil;
 import com.project.miu.commons.util.TokenUtil;
 import com.project.miu.commons.myEnum.ResultEnum;
 import com.project.miu.commons.util.Result;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,33 +37,26 @@ public class LoginController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/login",method = {RequestMethod.POST})
-    public Result login(String userName, String password, HttpServletRequest request){
+    @RequestMapping(value = "/login",method = {RequestMethod.GET})
+    public Result login(String userName, String password, HttpServletRequest request) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         if(StringUtils.isEmpty(userName)|| StringUtils.isEmpty(password)){
             return ResultUtil.error(ResultEnum.USER_NOT_EXIST.getCode(),ResultEnum.USER_NOT_EXIST.getMsg());
         }
-        int res = loginService.login(userName,password);
-        if(res == 0){
+        Map<String, Object> res = loginService.login(userName,password,request);
+        if(res == null){
             return ResultUtil.error(ResultEnum.USER_NOT_EXIST.getCode(),ResultEnum.USER_NOT_EXIST.getMsg());
         }
-        Map<String, Object> map = new HashMap<String, Object>();
-        HttpSession session = request.getSession();
-        String token = TokenUtil.genetateToken(userName);
-        session.setAttribute(SESSION_TOKEN_KEY, token);
-        session.setAttribute(SESSION_USERNAME_KEY, userName);
-        session.setMaxInactiveInterval(30 * 60);
-        map.put("token", token);
-        return ResultUtil.success(map);
+        return ResultUtil.success(res);
     }
 
     /**
-     * 注册 //todo 将密码加密
+     * 注册
      * @param userName 用户名
      * @param password 密码
      * @return
      */
     @RequestMapping(value = "/register",method = {RequestMethod.POST})
-    public Result register(String userName,String password){
+    public Result register(String userName,String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         if(StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)){
             return ResultUtil.error(ResultEnum.USER_NOT_EXIST.getCode(),ResultEnum.USER_NOT_EXIST.getMsg());
         }

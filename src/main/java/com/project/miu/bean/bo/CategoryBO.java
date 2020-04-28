@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class CategoryBO {
-    private long categoryUuid;
+    private String memberId;
+    private String categoryUuid;
     private String categoryName;
 }

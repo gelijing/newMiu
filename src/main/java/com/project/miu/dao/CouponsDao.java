@@ -19,5 +19,7 @@ public interface CouponsDao extends JpaRepository<Coupons,Integer> {
 
     List<Coupons> findByEndTimeLessThan(Date nowTime);
 
-    Page<Coupons> findByBankUuid(Long bankId, Pageable pageable);
+
+
+    //Page<Coupons> findByBankUuid(Long bankId, Pageable pageable);
 }

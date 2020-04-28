@@ -1,7 +1,6 @@
 package com.project.miu.controller;
 
 import com.project.miu.bean.model.Coupons;
-import com.project.miu.bean.model.Great;
 import com.project.miu.commons.util.Result;
 import com.project.miu.commons.util.ResultUtil;
 import com.project.miu.service.GreatService;

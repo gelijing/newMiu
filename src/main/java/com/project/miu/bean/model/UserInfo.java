@@ -21,6 +21,7 @@ public class UserInfo {
   private long id;
   private String userName;
   private String password;
+  private String userUuid;
   private long status;
   @CreatedDate
   private Date createTime;

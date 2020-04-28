@@ -10,6 +10,7 @@
     </parent>
     <groupId>com.project</groupId>
     <artifactId>miu</artifactId>
+    <packaging>war</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <name>miu</name>
     <description>Demo project for Spring Boot</description>

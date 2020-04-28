@@ -70,12 +70,13 @@ public class CouponsListController {
      * @param pageSize
      * @return
      */
-    @RequestMapping(value = "/getCouponsListByBankId",method = {RequestMethod.POST})
+    //todo 有问题
+    /*@RequestMapping(value = "/getCouponsListByBankId",method = {RequestMethod.POST})
     public Result getCouponsListByBankId(Long bankId,Integer pageNum,Integer pageSize){
         if(bankId == null){
             return ResultUtil.error("参数错误！");
         }
         CouponsListVO couponsList = couponsListService.getCouponsListByBankId(bankId,pageNum,pageSize);
         return ResultUtil.success(couponsList);
-    }
+    }*/
 }

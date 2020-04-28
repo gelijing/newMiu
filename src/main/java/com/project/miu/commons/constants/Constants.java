@@ -4,6 +4,7 @@ public interface Constants {
 
     String SESSION_TOKEN_KEY = "SESSION_TOKEN";
     String SESSION_USERNAME_KEY = "SESSION_USERNAME";
+    String SESSION_USERID_KEY = "SESSION_USERID";
     String ADD_USER_URL = "/addUsers";
 
     String DATA_BASE_PATH = "e:\\";

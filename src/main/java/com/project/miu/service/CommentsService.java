@@ -1,17 +1,17 @@
 package com.project.miu.service;
 
 import com.project.miu.bean.model.Comments;
+import com.project.miu.commons.util.IdGenerateUtil;
+import com.project.miu.commons.util.SecurityUtil;
 import com.project.miu.dao.CommentsDao;
+import io.jsonwebtoken.lang.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import java.util.UUID;
 
-import static com.project.miu.commons.constants.Constants.SESSION_TOKEN_KEY;
-
+/**
+ * 评论
+ */
 @Service
 public class CommentsService {
 
@@ -19,20 +19,14 @@ public class CommentsService {
     private CommentsDao commentsDao;
 
     /**
-     * 添加评论
+     * 添加评论 todo 是否允许重复评论？？
      * @param couponsUuid 优惠券uuid
      * @param commentsContent 评价内容
-     * @param request
      * @return
      */
-    public int addComments(String couponsUuid, String commentsContent, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        String userUuid = (String) session.getAttribute(SESSION_TOKEN_KEY);//获取用户id
-        UUID uuid = UUID.randomUUID();
-        String str = uuid.toString();
-        String commentsUuid = str.replace("-", "");
+    public int addComments(String userUuid, String couponsUuid, String commentsContent) {
         Comments comments = new Comments();
-        comments.setCommentsUuid(commentsUuid);
+        comments.setCommentsUuid(IdGenerateUtil.getUUID());
         comments.setUserUuid(userUuid);
         comments.setCommentsContent(commentsContent);
         comments.setCouponsUuid(couponsUuid);
@@ -46,15 +40,13 @@ public class CommentsService {
 
     /**
      * 删除评论
-     * @param commentsUuid 评论id
+     * @param commentsUuid 评论id todo 只能删除自己的评论？？
      * @return
      * @throws Exception
      */
-    public boolean deleteComment(String commentsUuid) throws Exception {
-        Comments res = commentsDao.findByCommentsUuidAndDeleteData(commentsUuid,1);
-        if(res == null){
-            throw new Exception("该评论不存在！");
-        }
+    public boolean deleteComment(String memberId,String commentsUuid) throws Exception {
+        Comments res = commentsDao.findByUserUuidAndCommentsUuidAndDeleteData(memberId,commentsUuid,1);
+        Assert.notNull(res,"删除评论失败！");
         res.setDeleteData(2);
         Comments save = commentsDao.save(res);
         if(save == null){

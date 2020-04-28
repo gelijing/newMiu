@@ -17,9 +17,9 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long categoryUuid;
+    private String categoryUuid;
     private String categoryName;
     private Date createTime;
     private Date updateTime;
-    private long deleteData;
+    private Integer deleteData;
 }
