@@ -67,6 +67,12 @@ public class LoginController {
         return ResultUtil.success();
     }
 
+    /**
+     * 退出登录
+     * @param userName
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/exit",method = {RequestMethod.POST})
     //todo token中应该包含userName
     public Result exit(String userName, HttpServletRequest request){

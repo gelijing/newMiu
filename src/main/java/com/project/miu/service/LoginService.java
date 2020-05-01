@@ -55,7 +55,7 @@ public class LoginService {
      */
     public int register(String userName, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         UserInfo user = loginDao.findByUserName(userName);
-        Assert.notNull(user,"该用户已存在！");
+        Assert.isNull(user,"该用户已存在！");
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(userName);
         String newPassword = TokenUtil.EncoderByMd5(password);
