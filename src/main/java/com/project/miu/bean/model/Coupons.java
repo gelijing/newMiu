@@ -20,7 +20,8 @@ public class Coupons {
     private long money;
     private String address;
     private String description;
-    private long categoryUuid;
+    private String categoryUuid;
+    private String bankUuid;
     private Timestamp startTime;
     private Timestamp endTime;
     private Timestamp createTime;

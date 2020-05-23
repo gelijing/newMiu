@@ -11,11 +11,10 @@ import java.util.Date;
 @Data
 @DynamicUpdate
 @EntityListeners(AuditingEntityListener.class)
-public class Great {
+public class UserCollectCoupons {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String uuid;
     private String userUuid;
     private String couponsUuid;
     private Integer deleteData;

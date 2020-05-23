@@ -37,8 +37,8 @@ public class LoginController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/login",method = {RequestMethod.GET})
-    public Result login(String userName, String password, HttpServletRequest request) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    @RequestMapping(value = "/login",method = {RequestMethod.POST})
+    public Result login(String userName, String password, HttpServletRequest request) throws Exception {
         if(StringUtils.isEmpty(userName)|| StringUtils.isEmpty(password)){
             return ResultUtil.error(ResultEnum.USER_NOT_EXIST.getCode(),ResultEnum.USER_NOT_EXIST.getMsg());
         }
@@ -56,7 +56,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/register",method = {RequestMethod.POST})
-    public Result register(String userName,String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public Result register(String userName,String password) throws Exception {
         if(StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)){
             return ResultUtil.error(ResultEnum.USER_NOT_EXIST.getCode(),ResultEnum.USER_NOT_EXIST.getMsg());
         }

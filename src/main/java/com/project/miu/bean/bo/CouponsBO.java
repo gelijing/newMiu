@@ -12,7 +12,7 @@ public class CouponsBO {
     private long money;
     private String address;
     private String desc;
-    private long categoryUuid;
+    private String categoryUuid;
     private String startTime;
     private String endTime;
     private String createTime;

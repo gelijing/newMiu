@@ -1,8 +1,6 @@
 package com.project.miu.bean.dto;
 
 /**
- * @author zhuyintao
- * @date 20180201
  * 公共平台用户信息类
  */
 public class SessionUserDTO {

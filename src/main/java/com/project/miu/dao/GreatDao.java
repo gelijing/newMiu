@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public interface GreatDao extends JpaRepository<Great,Long> {
-    Great findByUserUuidAndCouponsUuid(long user_uuid, long coupons_uuid);
+    Great findByUserUuidAndCouponsUuid(String user_uuid, String coupons_uuid);
 
-    Great findByUuid(long uuid);
+    Great findByUuid(String uuid);
 
-    List<Great> findByUserUuid(long user_uuid);
+    List<Great> findByUserUuid(String user_uuid);
 }

@@ -22,7 +22,7 @@ public class UserInfo {
   private String userName;
   private String password;
   private String userUuid;
-  private long status;
+  private long status;//1:正常 2:删除 3:锁定账号
   @CreatedDate
   private Date createTime;
   @LastModifiedDate

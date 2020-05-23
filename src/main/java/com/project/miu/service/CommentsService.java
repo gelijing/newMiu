@@ -1,12 +1,19 @@
 package com.project.miu.service;
 
 import com.project.miu.bean.model.Comments;
+import com.project.miu.bean.vo.PageResult;
 import com.project.miu.commons.util.IdGenerateUtil;
 import com.project.miu.commons.util.SecurityUtil;
 import com.project.miu.dao.CommentsDao;
 import io.jsonwebtoken.lang.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -53,5 +60,19 @@ public class CommentsService {
             return false;
         }
         return true;
+    }
+
+    /**
+     * 查询优惠券相关的用户评价
+     * @param couponsUuid 优惠券id
+     * @param page 页码
+     * @param size 条数/每页
+     * @return
+     */
+    public Page<Comments> viewComments(String couponsUuid,Integer page,Integer size) {
+//        PageRequest of = PageRequest.of(page - 1, size);
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.Direction.DESC, "id");
+        Page<Comments> commentsPage = commentsDao.findByCouponsUuid(couponsUuid,pageable);
+        return commentsPage;
     }
 }

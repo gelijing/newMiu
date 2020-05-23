@@ -1,13 +1,19 @@
 package com.project.miu.controller;
 
+import com.project.miu.bean.model.Comments;
+import com.project.miu.bean.vo.PageResult;
 import com.project.miu.commons.util.Result;
 import com.project.miu.commons.util.ResultUtil;
 import com.project.miu.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -43,7 +49,8 @@ public class CommentsController {
      * @throws Exception
      */
     @RequestMapping(value = "delComments",method = {RequestMethod.DELETE})
-    public Result delComments(String userUuid,String commentsUuid) throws Exception {
+    public Result delComments(@RequestParam("userUuid") String userUuid,
+                              @RequestParam("commentsUuid") String commentsUuid) throws Exception {
         if(StringUtils.isEmpty(userUuid) || StringUtils.isEmpty(commentsUuid)){
             return ResultUtil.error("参数错误！");
         }
@@ -53,4 +60,21 @@ public class CommentsController {
         }
         return ResultUtil.success("删除评论成功！");
     }
-}
+
+    /**
+     * 查看优惠券信息下的相关评论
+     * @param couponsUuid 优惠券id
+     * @param page 页码 默认1
+     * @param size 条数 默认10
+     * @return
+     */
+    @RequestMapping(value = "viewComments",method = {RequestMethod.POST})
+    public Result viewComments(@RequestParam("couponsUuid") String couponsUuid,
+                               @RequestParam(value = "page",defaultValue = "1") Integer page,
+                               @RequestParam(value = "size",defaultValue = "10") Integer size){
+        if( StringUtils.isEmpty(couponsUuid)){
+            return ResultUtil.error("参数错误！");
+        }
+        Page<Comments> commentsPage = commentsService.viewComments(couponsUuid, page, size);
+        return ResultUtil.success(new PageResult<>(commentsPage.getTotalElements(),commentsPage.getContent()));
+    }}
